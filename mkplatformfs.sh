@@ -53,7 +53,7 @@ usage() {
 
 	Supported platforms: i686, x86_64, GCP,
 	                     rpi-armv6l, rpi-armv7l, rpi-aarch64,
-	                     pinebookpro, pinephone, rock64
+			     pinebookpro(-megos), pinephone, rock64
 	
 	OPTIONS
 	 -b <system-pkg>  Set an alternative base-system package (default: base-system)
@@ -124,6 +124,7 @@ case "$PLATFORM" in
     i686*) PKGS="$BASEPKG" ;;
     x86_64*) PKGS="$BASEPKG" ;;
     GCP*) PKGS="$BASEPKG ${PLATFORM%-*}-base" ;;
+    pinebookpro-megos) PKGS="$BASEPKG pinebookpro-megos-base" ;;
     pinebookpro*) PKGS="$BASEPKG ${PLATFORM%-*}-base" ;;
     pinephone*) PKGS="$BASEPKG ${PLATFORM%-*}-base" ;;
     rock64*) PKGS="$BASEPKG ${PLATFORM%-*}-base" ;;

@@ -116,7 +116,7 @@ PLATFORM="${PLATFORM%-PLATFORMFS*}"
 
 # Be absolutely certain the platform is supported before continuing
 case "$PLATFORM" in
-    rpi-armv6l|rpi-armv7l|rpi-aarch64|GCP|pinebookpro|pinephone|rock64|*-musl);;
+    rpi-armv6l|rpi-armv7l|rpi-aarch64|GCP|pinebookpro-megos|pinebookpro|pinephone|rock64|*-musl);;
     *) die "The $PLATFORM is not supported, exiting..."
 esac
 
@@ -273,6 +273,10 @@ DTBPATH=""
 _EOF
     mkdir -p "${ROOTFS}/boot/extlinux"
     run_cmd_chroot "${ROOTFS}" "/etc/kernel.d/post-install/60-extlinux"
+    cleanup_chroot
+    ;;
+pinebookpro-megos)
+    run_cmd_chroot "${ROOTFS}" "xbps-reconfigure -f pinebookpro-megos-kernel"
     cleanup_chroot
     ;;
 pinebookpro*)
